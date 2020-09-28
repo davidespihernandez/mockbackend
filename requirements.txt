@@ -1,7 +1,10 @@
 click==7.1.2
+dnspython==2.0.0
+email-validator==1.1.1
 fastapi==0.61.1
 h11==0.9.0
 httptools==0.1.1
+idna==2.10
 pydantic==1.6.1
 starlette==0.13.6
 uvicorn==0.11.8
