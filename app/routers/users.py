@@ -17,10 +17,13 @@ async def send_verification_email(request: SendLoginVerificationEmailRequest):
 
 @router.post("/customer/login")
 async def login(request: LoginRequest):
-    valid_emails = {user.email: user for token, user in mocker.objects if not user.email.startswith("wrong")}
-    if request.email not in valid_emails:
+    users_per_email = {
+        user.email: user
+        for token, user in mocker.objects.items()
+    }
+    if request.email not in users_per_email:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
-    user: User = valid_emails[request.email]
+    user: User = users_per_email[request.email]
     return RegistrationResponse(authToken=user.token, customerId=1, userId=1)
 
 
