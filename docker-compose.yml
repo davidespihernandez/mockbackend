@@ -4,3 +4,5 @@ services:
     build: .
     ports:
       - "8500:8500"
+    volumes:
+      - ./app:/app
