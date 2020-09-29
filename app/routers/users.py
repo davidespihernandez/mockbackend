@@ -24,7 +24,7 @@ async def login(request: LoginRequest):
     if request.email not in users_per_email:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     user: User = users_per_email[request.email]
-    return RegistrationResponse(authToken=user.token, customerId=1, userId=1)
+    return RegistrationResponse(auth_token=user.token, customer_id=1, user_id=1)
 
 
 @router.get("/users/user")

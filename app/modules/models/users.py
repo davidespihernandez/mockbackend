@@ -14,17 +14,17 @@ class LoginRequest(BaseModel):
 
 
 class RegistrationResponse(BaseModel):
-    authToken: str
-    customerId: int
-    userId: int
+    auth_token: str
+    customer_id: int
+    user_id: int
 
 
 class User(BaseModel):
     token: Optional[str]
     title: str
     login: Optional[str]
-    firstName: str
-    lastName: str
+    first_name: str
+    last_name: str
     email: str
     address: Optional[str]
     postcode: Optional[str]
