@@ -1,7 +1,10 @@
-from fastapi import APIRouter, HTTPException, status, Header
+from fastapi import APIRouter, HTTPException, status, Depends
 
 from app.modules.mockers.users import UsersMocker
-from app.modules.models.users import SendLoginVerificationEmailRequest, LoginRequest, User, RegistrationResponse
+from app.modules.models.users import (
+    SendLoginVerificationEmailRequest, LoginRequest, User, RegistrationResponse
+)
+from app.routers import auth_header
 
 router = APIRouter()
 mocker = UsersMocker()
@@ -22,5 +25,5 @@ async def login(request: LoginRequest):
 
 
 @router.get("/users/user")
-async def request_user(token: str = Header(...)):
+async def request_user(token: str = Depends(auth_header)):
     return mocker.get_detail(token)
